@@ -1,0 +1,16 @@
+- 롬복 설치 및 테스트 
+	Member.java, TestMain
+	
+- 사용자 계정 생성 
+	CREATE USER book_ex IDENTIFIED BY book_ex
+	DEFAULT TABLESPACE USERS 
+	TEMPORARY TABLESPACE TEMP
+
+- 권한 부여 
+	GRANT CONNECT, DBA TO BOOK_EX; 
+
+- 포트번호 변경
+	exec dbms_xdb.sethttpport(9090);
+
+- 포트번호 확인 
+	select dbms_xdb.gethttpport() from dual;

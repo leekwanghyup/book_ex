@@ -58,8 +58,15 @@ public class BoardServiceTests {
 	}
 
 	@Test
+	@Ignore
 	public void getListTest() {
 		List<BoardVO> list = service.getList(new Criteria(1,15));
 		list.forEach(article -> System.out.println(article));
+	}
+	
+	@Test
+	public void getTotalTest() {
+		int total = service.getTotal(new Criteria()); 
+		log.info("전체 게수물 수 : " + total);
 	}
 }

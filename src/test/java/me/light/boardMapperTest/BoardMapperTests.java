@@ -87,7 +87,12 @@ public class BoardMapperTests {
 		cri.setPageNum(1); 
 		List<BoardVO> list = boardMapper.getListWithPaging(cri);
 		log.info("출력된 게시물 수 :" +  list.size());
+	}
 	
+	@Test
+	public void intCountTotalTest() {
+		int total = boardMapper.getTotalCount(new Criteria()); 
+		log.info("전체게시물 수 : " + total);
 	}
 	
 }

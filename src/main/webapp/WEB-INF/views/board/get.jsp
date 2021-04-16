@@ -40,6 +40,8 @@
 				<button data-oper='list' class="btn btn-info">목록</button>
 				<form id="operForm">
 					<input hidden="text" id="bno" name="bno" value="${board.bno}">
+					<input hidden="text" id="pageNum" name="pageNum" value="${cri.pageNum}">
+					<input hidden="text" id="amount" name="amount" value="${cri.amount}">
 				</form>
 			</div>
 		</div>

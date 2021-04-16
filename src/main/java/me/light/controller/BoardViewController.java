@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.extern.log4j.Log4j;
@@ -23,7 +24,7 @@ public class BoardViewController {
 	public void register() {}
 	
 	@GetMapping({"/get","/modify"})
-	public void get(Long bno, Model model) {
+	public void get(Long bno, Model model, @ModelAttribute("cri") Criteria cri) {
 	    model.addAttribute("board",service.get(bno));
 	}
 	

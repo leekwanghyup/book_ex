@@ -21,24 +21,11 @@ public class BoardController {
 	@Autowired
 	private BoardService service;
 	
-	@GetMapping("/list")
-	public void list(Criteria cri, Model model) {
-		log.info("BoardController : mapping - /board/list");
-		model.addAttribute("list", service.getList(cri)); 
-	}
-	
 	@PostMapping("/register")
 	public String register(BoardVO board, RedirectAttributes rttr) {
 		service.register(board); 
 		rttr.addFlashAttribute("result",board.getBno());
 		return "redirect:/board/list"; 
-	}
-	
-	@RequestMapping("/get")
-	public String get(Long bno, Model model) {
-		log.info("BoardController : mapping - /board/get");
-		model.addAttribute("board",service.get(bno) );
-		return "/board/get"; 
 	}
 	
 	@PostMapping("/modify")

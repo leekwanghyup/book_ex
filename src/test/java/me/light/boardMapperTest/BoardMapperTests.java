@@ -1,5 +1,7 @@
 package me.light.boardMapperTest;
 
+import java.util.List;
+
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import lombok.extern.log4j.Log4j;
 import me.light.config.RootConfig;
 import me.light.domain.BoardVO;
+import me.light.domain.Criteria;
 import me.light.mapper.BoardMapper;
 
 @Log4j
@@ -74,6 +77,16 @@ public class BoardMapperTests {
 		boardVO.setWriter("UpdatedTestUser");
 		int updated = boardMapper.update(boardVO); 
 		log.info("Updated Article Number : " + updated);
+	}
+	
+	@Test
+	public void pagingTest() {
+		Criteria cri = new Criteria(); 
+		cri.setAmount(15); // 한 페이지에 보여줄 게시물 수 15개 
+		cri.setPageNum(1); 
+		List<BoardVO> list = boardMapper.getListWithPaging(cri);
+		log.info("출력된 게시물 수 :" +  list.size());
+	
 	}
 	
 }

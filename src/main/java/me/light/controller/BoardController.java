@@ -10,6 +10,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.extern.log4j.Log4j;
 import me.light.domain.BoardVO;
+import me.light.domain.Criteria;
 import me.light.service.BoardService;
 
 @Log4j
@@ -21,9 +22,9 @@ public class BoardController {
 	private BoardService service;
 	
 	@GetMapping("/list")
-	public void list(Model model) {
+	public void list(Criteria cri, Model model) {
 		log.info("BoardController : mapping - /board/list");
-		model.addAttribute("list", service.getList()); 
+		model.addAttribute("list", service.getList(cri)); 
 	}
 	
 	@PostMapping("/register")

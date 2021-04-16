@@ -80,6 +80,7 @@ public class BoardMapperTests {
 	}
 	
 	@Test
+	@Ignore
 	public void pagingTest() {
 		Criteria cri = new Criteria(); 
 		cri.setAmount(15); // 한 페이지에 보여줄 게시물 수 15개 

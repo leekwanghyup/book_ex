@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import lombok.extern.log4j.Log4j;
 import me.light.config.RootConfig;
 import me.light.domain.BoardVO;
+import me.light.domain.Criteria;
 
 @Log4j
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -57,9 +58,8 @@ public class BoardServiceTests {
 	}
 
 	@Test
-	@Ignore
 	public void getListTest() {
-		List<BoardVO> list = service.getList();
+		List<BoardVO> list = service.getList(new Criteria(1,15));
 		list.forEach(article -> System.out.println(article));
 	}
 }

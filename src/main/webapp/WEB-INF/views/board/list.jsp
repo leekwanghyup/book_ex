@@ -98,7 +98,7 @@
 
 <script>
 $(function(){
-	var result = "${result}";
+	var result = "${result}"; 
 	console.log("result 값 확인 : "+result);
 	
 	checkModal(result);

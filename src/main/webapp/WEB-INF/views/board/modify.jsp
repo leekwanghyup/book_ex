@@ -17,8 +17,10 @@
 			<div class="panel-heading">글수정</div>
 			<div class="panel-body">
 				<form role="form" action="/board/modify" method="post">
-					<input hidden="text" id="pageNum" name="pageNum" value="${cri.pageNum}">
-					<input hidden="text" id="amount" name="amount" value="${cri.amount}">
+					<input type="hidden" id="pageNum" name="pageNum" value="${cri.pageNum}">
+					<input type="hidden" id="amount" name="amount" value="${cri.amount}">
+					<input type="hidden" id="type" name="type" value="${cri.type}"> 
+					<input type="hidden" id="keyword" name="keyword" value="${cri.keyword}">
 					<div class="form-group">
 						<label>번호</label>
 						<input type="text" name="bno" class="form-control" value="${board.bno}" readonly="readonly">
@@ -64,9 +66,13 @@ $(function(){
 					.attr("method","get");
 			var pageNumTag = $("input[name='pageNum']").clone(); // 페이지정보 수집 
 			var amountTag = $("input[name='amount']").clone(); // 페이지정보 수집 
+			var keywordTag = $("input[name='keyword']").clone();
+			var typeTag = $("input[name='type']").clone();
 		    formObj.empty(); // 페이지 정보외에 모든 정보는 삭제 
 		    formObj.append(pageNumTag);
 		    formObj.append(amountTag);
+		    formObj.append(keywordTag);
+			formObj.append(typeTag); 
 		}
 		formObj.submit(); 
 	})

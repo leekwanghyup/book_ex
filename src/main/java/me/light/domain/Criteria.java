@@ -9,7 +9,10 @@ import lombok.ToString;
 @ToString
 public class Criteria {
 	private int pageNum; // 페이지 번호  
-	private int amount;  // 한 페이지당 보여줄 게시물 수 
+	private int amount;  // 한 페이지당 보여줄 게시물 수
+	
+	private String type; 
+	private String keyword; 
 	
 	public Criteria() {
 		this(1,10); // 기본값 : 1페이지 당 10개의 게시물  
@@ -19,5 +22,9 @@ public class Criteria {
 		super();
 		this.pageNum = pageNum;
 		this.amount = amount;
+	}
+	
+	public String[] getTypeArr() {
+		return type == null ? new String[] {} : type.split(""); 
 	}
 }

@@ -29,4 +29,28 @@ select * from tbl_board;
 
 -- 재귀 복사 
  insert into tbl_board (bno,title,content,writer)
- (select seq_board.nextval,title,content,writer from tbl_board); 
+ (select seq_board.nextval,title,content,writer from tbl_board);
+ 
+ 
+ ## 댓글 처리를 위한 테이블 
+ create table tbl_reply(
+    rno number(10,0), 
+    bno number(10,0) not null, 
+    reply varchar2(1000) not null, 
+    replyer varchar2(50) not null,
+    replyDate date default sysdate,
+    updateDate date default sysdate
+);
+
+## 시퀀스 
+create sequence seq_reply;
+
+## 기본키  
+alter table tbl_reply add constraint pk_reply primary key(rno);
+
+## 외래키 
+alter table tbl_reply add constraint fk_reply_board 
+foreign key (bno) references tbl_board(bno);
+  
+  
+  

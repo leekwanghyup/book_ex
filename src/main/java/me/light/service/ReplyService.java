@@ -7,7 +7,7 @@ import me.light.domain.ReplyVO;
 
 public interface ReplyService {
 	
-	int regisetr(ReplyVO vo); 
+	int register(ReplyVO vo); 
 	
 	ReplyVO get(Long rno); 
 	

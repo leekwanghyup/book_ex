@@ -29,7 +29,7 @@ public class ReplyServiceTests {
 		vo.setBno(767L);
 		vo.setReply("reply Serivce test content");
 		vo.setReplyer("replyerTester");
-		int isSucess =  sevice.regisetr(vo); 
+		int isSucess =  sevice.register(vo); 
 		log.info(" inser reply test : " + isSucess);
 	}
 	

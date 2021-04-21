@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ include file="../includes/header.jsp" %>
-
+<script src="/resources/js/reply.js"></script>
 <div class="container">
 	
 <div class="row">
@@ -52,7 +52,6 @@
 	
 </div>
 <%@ include file="../includes/footer.jsp" %>
-
 <script>
 	var operForm = $("#operForm"); 
 	$("button").on("click",function(e){
@@ -66,4 +65,20 @@
 		}
 		operForm.submit(); 
 	})
+	
+	// 댓글 서비스 
+	$(function(){
+		// insert test
+		var bnoValue = "${board.bno}"; //현재 게시판 번호  
+		var reply ={ // 전달 데이터 
+			bno : bnoValue,
+	        reply : "reply insert test",
+	        replyer : "tester2",
+		}; 
+		var result = (result)=>{ // 콜백함수 
+			alert("result : " + result); 
+		}; 
+		replyService.add(reply,result); 
+	})
+	
 </script>

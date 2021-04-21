@@ -21,7 +21,7 @@ $(function(){
 				    <li class='list-group-item left clearfix' data-rno=${list[i].rno}>
 					    <div>
 					        <div class='header'><strong class='primary-font'>${list[i].replyer}</strong>
-					            <small class='pull-right text-muted'>${list[i].replyDate}</small><br>
+                                <small class='pull-right text-muted'>${replyService.displayTime(list[i].replyDate)}</small><br>
 					        </div><br>
 					        <p>${list[i].reply}</p>
 					    </div>
@@ -30,5 +30,5 @@ $(function(){
 	            }
 	            replyUL.html(str);
 	    });
-	}
+	}    
 })

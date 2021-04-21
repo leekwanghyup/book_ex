@@ -3,10 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ include file="../includes/header.jsp" %>
-<script src="/resources/js/reply.js"></script>
-<script src="/resources/js/get.js"></script>
-
-
 <div class="container">
 	
 <div class="row">
@@ -82,6 +78,9 @@
 
 	
 </div>
+<script src="/resources/js/reply.js"></script>
+<script src="/resources/js/get.js"></script>
+
 <%@ include file="../includes/footer.jsp" %>
 <script>
 	var operForm = $("#operForm");

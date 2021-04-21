@@ -68,23 +68,18 @@
 	
 	// 댓글 서비스 
 	$(function(){
-		
-		// getList Test
-		var bnoValue = "${board.bno}";
-		replyService.getList({bno : bnoValue, page : 1}, function(list) {
-			for (var i = 0; i < list.length; i++) {
-				console.log(list[i])
-			}
-		}); 
-		
-		//get Test
-		console.log("-----reply get test-------")
-	    replyService.get(
-            21,
-            function(result) {
-                console.log(result)
-            }
-        ); 
+		// reply update Tset
+		var bnoValue = "${board.bno}"; 
+		replyService.update(
+		    {
+		        rno : 21,
+		        bno : bnoValue,
+		        reply : "Modify test"
+		    },
+		    function(result){
+		    	alert('updated'); 
+		    }
+		)		
 	})
 	
 </script>

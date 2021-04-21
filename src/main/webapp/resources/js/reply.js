@@ -40,12 +40,29 @@ var replyService = (() => {
 		}).fail((xhr, status, er)=>{
 			if(error) error() 
 		})
-	}
+	}; 
+
+	// 댓글 수정 
+	var update = (reply, callback, error)=>{
+		$.ajax({
+			type : "put",
+			url : "/replies/" + reply.rno,
+			data : JSON.stringify(reply),
+			contentType : "application/json; charset=utf-8",
+			success : (result, status, xhr)=>{
+				if(callback) callback(result)
+			},
+			error : (xhr, status, er) => {
+				if(error) error(er)
+			}
+		})
+	}; 
 
 return {
 		add : add, 
 		getList : getList, 
 		get : get, 
+		update : update, 
 	}
 })();
 

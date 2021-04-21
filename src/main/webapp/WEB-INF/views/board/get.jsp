@@ -4,6 +4,9 @@
 
 <%@ include file="../includes/header.jsp" %>
 <script src="/resources/js/reply.js"></script>
+<script src="/resources/js/get.js"></script>
+
+
 <div class="container">
 	
 <div class="row">
@@ -49,11 +52,41 @@
 		</div>
 	</div>
 </div>
+
+<div class="row"> <!-- 댓글 목록 -->
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                댓글 
+            </div>
+            <div class="panel-body">
+                <ul class="list-group chat">
+                    <li class="list-group-item left clearfix " data-rno="12">
+                        <div>
+                            <div class="header">
+                                <strong class="primary-font">user00</strong>        
+                                <small class="pull-right text-muted">2020-10-10</small>
+                            </div>
+                            <p>
+                            	Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab quaerat praesentium nisi quisquam. 
+                            	Eveniet dolor cum maxime consequuntur
+                            	culpa accusantium, esse facilis corporis ea, voluptas optio placeat earum quo doloribus!
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
 	
 </div>
 <%@ include file="../includes/footer.jsp" %>
 <script>
-	var operForm = $("#operForm"); 
+	var operForm = $("#operForm");
+	var bnoValue = "${board.bno}" // 게시물 번호 
+	
 	$("button").on("click",function(e){
 		e.preventDefault();
 		var operation = $(this).data('oper')
@@ -65,15 +98,5 @@
 		}
 		operForm.submit(); 
 	})
-	
-	// 댓글 서비스 
-	$(function(){
-		// reply delete Test 
-		replyService.remove(21,(result) => {
-		    if(result === "success") alert('REMOVE'); 
-		}, (er) => {
-		    alert('ERROR')
-		}); 		
-	})
-	
 </script>
+

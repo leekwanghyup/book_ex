@@ -68,17 +68,23 @@
 	
 	// 댓글 서비스 
 	$(function(){
-		// insert test
-		var bnoValue = "${board.bno}"; //현재 게시판 번호  
-		var reply ={ // 전달 데이터 
-			bno : bnoValue,
-	        reply : "reply insert test",
-	        replyer : "tester2",
-		}; 
-		var result = (result)=>{ // 콜백함수 
-			alert("result : " + result); 
-		}; 
-		replyService.add(reply,result); 
+		
+		// getList Test
+		var bnoValue = "${board.bno}";
+		replyService.getList({bno : bnoValue, page : 1}, function(list) {
+			for (var i = 0; i < list.length; i++) {
+				console.log(list[i])
+			}
+		}); 
+		
+		//get Test
+		console.log("-----reply get test-------")
+	    replyService.get(
+            21,
+            function(result) {
+                console.log(result)
+            }
+        ); 
 	})
 	
 </script>

@@ -16,8 +16,36 @@ var replyService = (() => {
 			}
 		}); 
 	}
+
+	// 댓글 목록 
+	var getList = (param, callback, error) =>{
+		
+		var bno = param.bno;
+		var page = param.page || 1; 
+		
+		// $.getJSON(url, SuccessCallback).fail(failCallback)
+		$.getJSON("/replies/pages/" + bno + "/" + page, 
+			(data) => {
+				if(callback) callback(data);
+		}).fail((xhr, status, err) => {
+			if(error) error(); 
+		});
+	}; 
+
+	// 댓글 조회 
+	var get = (rno, callback, error)=>{
+		$.get("/replies/" + rno ,  
+			(result) => {
+				if(callback) callback(result)
+		}).fail((xhr, status, er)=>{
+			if(error) error() 
+		})
+	}
+
 return {
 		add : add, 
+		getList : getList, 
+		get : get, 
 	}
 })();
 

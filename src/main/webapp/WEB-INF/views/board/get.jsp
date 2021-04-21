@@ -68,18 +68,12 @@
 	
 	// 댓글 서비스 
 	$(function(){
-		// reply update Tset
-		var bnoValue = "${board.bno}"; 
-		replyService.update(
-		    {
-		        rno : 21,
-		        bno : bnoValue,
-		        reply : "Modify test"
-		    },
-		    function(result){
-		    	alert('updated'); 
-		    }
-		)		
+		// reply delete Test 
+		replyService.remove(21,(result) => {
+		    if(result === "success") alert('REMOVE'); 
+		}, (er) => {
+		    alert('ERROR')
+		}); 		
 	})
 	
 </script>

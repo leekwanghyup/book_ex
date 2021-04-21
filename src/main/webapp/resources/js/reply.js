@@ -58,11 +58,26 @@ var replyService = (() => {
 		})
 	}; 
 
+	// 댓글 삭제 
+	var remove = (rno, callback, error)=>{
+		$.ajax({
+			type : "delete",
+			url : "/replies/" + rno ,
+			success : (result, status, xhr) => {
+				if(callback) callback(result)
+			},
+			error : (xhr, status, er) => {
+				if(error) error(er); 
+			}
+		})
+	}
+
 return {
 		add : add, 
 		getList : getList, 
 		get : get, 
 		update : update, 
+		remove : remove, 
 	}
 })();
 

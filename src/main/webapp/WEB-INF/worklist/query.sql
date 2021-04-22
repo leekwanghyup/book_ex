@@ -52,5 +52,17 @@ alter table tbl_reply add constraint pk_reply primary key(rno);
 alter table tbl_reply add constraint fk_reply_board 
 foreign key (bno) references tbl_board(bno);
   
-  
-  
+
+## 테이블 수정 :  댓글 수 칼럼 
+alter table tbl_board add (replycnt number default 0);   
+
+
+## 기본에 존재하는 테이블 수 반영 
+update 
+    tbl_board 
+set 
+    replycnt = (
+        select count(rno) from tbl_reply where tbl_reply.bno = tbl_board.bno        
+    );   
+
+

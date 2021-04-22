@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import me.light.domain.Criteria;
 import me.light.domain.ReplyVO;
+import me.light.mapper.BoardMapper;
 import me.light.mapper.ReplyMapper;
 
 @Service
@@ -15,8 +17,13 @@ public class ReplyServiceImpl implements ReplyService{
 	@Autowired
 	private ReplyMapper mapper; 
 	
+	@Autowired
+	private BoardMapper boardMapper; 
+	
 	@Override
+	@Transactional
 	public int register(ReplyVO vo) {
+		boardMapper.updateReplyCnt(vo.getBno(), 1);
 		return mapper.insert(vo);
 	}
 
@@ -31,7 +38,9 @@ public class ReplyServiceImpl implements ReplyService{
 	}
 
 	@Override
+	@Transactional
 	public int remove(Long rno) {
+		boardMapper.updateReplyCnt(mapper.read(rno).getBno(),-1);
 		return mapper.delete(rno);
 	}
 

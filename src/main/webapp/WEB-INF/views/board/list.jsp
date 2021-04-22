@@ -45,9 +45,11 @@
 					<c:forEach items="${list}" var="board">
 						<tr>
 							<td>${board.bno}</td>
-							<td><a class="move" href="${board.bno}">
-            					${board.title}
-        					</a></td>
+							<td><a class="move" href="${board.bno}">${board.title}</a>
+      					    <c:if test="${board.replyCnt != 0}">
+        						<b style="color:red;">[ <c:out value="${board.replyCnt}"/> ]</b>
+    						</c:if>
+        					</td>
 							<td>${board.writer}</td>
 							<td><fmt:formatDate value="${board.regDate}" pattern="yyyy-MM-dd HH:mm"/></td>
 							<td><fmt:formatDate value="${board.updateDate}" pattern="yyyy-MM-dd HH:mm"/></td>

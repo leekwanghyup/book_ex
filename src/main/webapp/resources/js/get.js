@@ -67,5 +67,28 @@ $(function(){
 		$("#myModalLabel").html("새로운 댓글 쓰기");
 		replyModal.modal("show");
 	});
+
+	// 특정댓글 클릭시 이벤트 발생(수정/삭제) 
+	$(".chat").on("click","a",function(e){ // <a> 태그에 이벤트 위임
+		e.preventDefault();
+		var rno = $(this).data("rno");
+		
+		replyService.get(rno, function(reply){
+			modalInputReply.val(reply.reply); 
+			modalInputReplyer.val(reply.replyer);
+			modalInputReplyDate.val(replyService.displayTime(reply.replyDate))
+			.attr("readonly", "readonly");  
+			modal.data("rno", reply.rno);
+			
+			modal.find("button[id != 'modalCloseBtn']").hide();
+			
+			$("#myModalLabel").html("댓글 수정/삭제");
+			modalModBtn.show(); 
+			modalRemoveBtn.show(); 
+			
+			modal.modal("show");
+		})
+	})
+
 })
  

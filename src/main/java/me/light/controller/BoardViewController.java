@@ -36,5 +36,9 @@ public class BoardViewController {
 		System.out.println(pageDTO);
 		model.addAttribute("pageMaker",pageDTO ); 
 	}
+	
+	@GetMapping("/modal_test")
+	public void modalTest() {}
+	
 }
 	

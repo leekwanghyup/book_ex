@@ -1,14 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%@ include file="../includes/header.jsp" %>
-<div class="container">
-	
-<div class="row">
-	<div class="col-lg-12">
-		<h1 class="page-header"> 조회페이지 </h1>
-	</div>
+
+<div>
+	<button id="addReplyBtn" class="btn btn-primary">모달버튼</button>
 </div>
 
 <div class="row">
@@ -49,23 +44,8 @@
 	</div>
 </div>
 
-<div class="row"> <!-- 댓글 목록 -->
-    <div class="col-lg-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-            	<span>댓글</span>
-				<button id="addReplyBtn" class="btn btn-primary btn-xs pull-right">
-					댓글쓰기
-				</button>            	
-            </div>
-            <div class="panel-body">
-                <ul class="list-group chat"></ul>
-            </div>
-        </div>
-    </div>
-</div>
 
-<div class="modal fade" id="addReplyModal" tabindex="-2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="addReplyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -92,12 +72,9 @@
 	</div>
 </div>
 
-</div>
-<script src="/resources/js/reply.js"></script>
-<script src="/resources/js/get.js"></script>
 <script>
 $(function(){
-	//댓글 모달창 이벤트 
+//댓글 모달창 이벤트 
 	var replyModal = $("#addReplyModal"); 
 	var modal = $(".modal");
 	var modalInputReply = modal.find("input[name='reply']");
@@ -107,7 +84,7 @@ $(function(){
 	var modalModBtn = $("#modalModBtn") 
 	var modalRemoveBtn = $("#modalRemoveBtn") 
 	var modalRegisterBtn = $("#modalRegisterBtn")
-	
+
 	$("#addReplyBtn").on("click",function(){
 		console.log('executing modal'); 
 		modal.find("input").val("");

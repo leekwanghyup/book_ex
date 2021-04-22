@@ -90,5 +90,44 @@ $(function(){
 		})
 	})
 
+	// 댓글 쓰기 등록 처리 
+	modalRegisterBtn.on("click",function(){
+		var reply = {
+				reply : modalInputReply.val(),
+				replyer : modalInputReplyer.val(),
+				bno : bnoValue
+		}; 
+		replyService.add(reply, function(result) {
+			if(result){
+				alert("새로운 댓글이 등록되었습니다.")
+			}			
+			modal.find("input").val(""); // 등록한 내용으로 다시 등록할 수 없도록 입력항목을 모두 비운다.  
+			modal.modal("hide"); 
+			showList(1); // 목록 갱신
+		}); 
+	})
+
+	// 댓글 수정 이벤트 처리 
+	modalModBtn.on("click", function(){
+		
+		var reply = {
+				rno : modal.data("rno"),
+				reply : modalInputReply.val()
+		};
+		
+		replyService.update(reply, function(result){
+			modal.modal("hide");
+			showList(1);
+		});
+	}); 
+
+// 댓글 삭제 이벤트 처리 
+	modalRemoveBtn.on("click",function(){
+		var rno = modal.data("rno"); 
+		replyService.remove(rno, function(){
+			modal.modal("hide"); 
+			showList(1);
+		}); 
+	});
 })
  

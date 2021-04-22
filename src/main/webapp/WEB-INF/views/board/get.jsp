@@ -96,27 +96,7 @@
 <script src="/resources/js/reply.js"></script>
 <script src="/resources/js/get.js"></script>
 <script>
-$(function(){
-	//댓글 모달창 이벤트 
-	var replyModal = $("#addReplyModal"); 
-	var modal = $(".modal");
-	var modalInputReply = modal.find("input[name='reply']");
-	var modalInputReplyer = modal.find("input[name='replyer']");
-	var modalInputReplyDate = modal.find("input[name='replyDate']");
-	
-	var modalModBtn = $("#modalModBtn") 
-	var modalRemoveBtn = $("#modalRemoveBtn") 
-	var modalRegisterBtn = $("#modalRegisterBtn")
-	
-	$("#addReplyBtn").on("click",function(){
-		console.log('executing modal'); 
-		modal.find("input").val("");
-		modalInputReplyDate.closest("div").hide(); 
-		modal.find("button[id !='modalCloseBtn']").hide();
-		modalRegisterBtn.show();    
-		replyModal.modal("show"); 
-	});
-})
+
 </script>
 
 <%@ include file="../includes/footer.jsp" %>
